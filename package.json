@@ -1,0 +1,24 @@
+{
+  "name": "dvp-httpprogrammingapidemo",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuoSoftware/DVP-HTTPProgrammingAPIDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuoSoftware/DVP-HTTPProgrammingAPIDemo/issues"
+  },
+  "homepage": "https://github.com/DuoSoftware/DVP-HTTPProgrammingAPIDemo#readme",
+  "dependencies": {
+    "restify": "^4.0.4",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
