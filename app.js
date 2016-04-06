@@ -1,9 +1,10 @@
 /**
  * Created by a on 3/23/2016.
  */
-var restify = require('restify');
+
 //var format = require("stringformat");
 
+var restify = require('restify');
 var server = restify.createServer({
     name: 'localhost',
     version: '1.0.0'
@@ -31,7 +32,7 @@ server.post('/', function(req,res,next) {
     obj.terminator ="*";
     obj.strip ="*";
     obj.digits =1;
-    obj.nexturl = "http://127.0.0.1:9998/process";
+    obj.nexturl = "process";
 
 
 
@@ -43,8 +44,6 @@ server.post('/', function(req,res,next) {
     return next();
 
 });
-
-
 
 
 server.post('/process', function(req,res,next) {
@@ -80,7 +79,7 @@ server.post('/process', function(req,res,next) {
             obj.callername = req.body.ani;
             obj.callernumber = req.body.ani;
             obj.number = "1000";
-            obj.nexturl= "http://127.0.0.1:9998/end";
+            obj.nexturl= "end";
 
 
 
@@ -94,7 +93,7 @@ server.post('/process', function(req,res,next) {
             obj.callername = req.body.ani;
             obj.callernumber = req.body.ani;
             obj.number = "1001";
-            obj.nexturl= "http://127.0.0.1:9998/end";
+            obj.nexturl= "end";
 
 
             break;
@@ -107,7 +106,7 @@ server.post('/process', function(req,res,next) {
             obj.callername = req.body.ani;
             obj.callernumber = req.body.ani;
             obj.number = "1002";
-            obj.nexturl= "http://127.0.0.1:9998/end";
+            obj.nexturl= "end";
 
 
 
@@ -117,7 +116,7 @@ server.post('/process', function(req,res,next) {
 
             obj.action = "hangup";
             obj.cause = "NORMAL_CLEAN";
-            obj.nexturl= "http://localhost/IVR/hangup.json"
+            obj.nexturl= "end"
 
 
             break;
@@ -136,8 +135,6 @@ server.post('/process', function(req,res,next) {
     return next();
 
 });
-
-
 
 
 server.post('/weather', function(req,res,next) {
@@ -165,7 +162,7 @@ server.post('/weather', function(req,res,next) {
             obj.terminator ="*";
             obj.strip ="*";
             obj.digits =1;
-            obj.nexturl = "http://127.0.0.1:9998/end";
+            obj.nexturl = "end";
 
 
 
@@ -178,7 +175,7 @@ server.post('/weather', function(req,res,next) {
             var obj = {};
             obj.action = "hangup";
             obj.cause = "NORMAL_CLEAN";
-            obj.nexturl= "http://localhost/IVR/hangup.json"
+            obj.nexturl= "end"
 
             res.end(JSON.stringify(obj));
 
@@ -218,7 +215,7 @@ server.post('/', function(req,res,next) {
             obj.terminator ="*";
             obj.strip ="*";
             obj.digits =1;
-            obj.nexturl = "http://127.0.0.1:9998/end";
+            obj.nexturl = "end";
 
 
 
@@ -231,7 +228,7 @@ server.post('/', function(req,res,next) {
             var obj = {};
             obj.action = "hangup";
             obj.cause = "NORMAL_CLEAN";
-            obj.nexturl= "http://localhost/IVR/hangup.json"
+            obj.nexturl= "end"
 
             res.end(JSON.stringify(obj));
 
@@ -246,7 +243,6 @@ server.post('/', function(req,res,next) {
 });
 
 
-
 server.post('/end', function(req,res,next) {
 
 
@@ -254,13 +250,15 @@ server.post('/end', function(req,res,next) {
     var obj = {};
     obj.action = "hangup";
     obj.cause = "NORMAL_CLEAN";
-    obj.nexturl= "http://localhost/IVR/hangup.json";
+    obj.nexturl= "end";
     res.end(JSON.stringify(obj));
     console.log(req.body);
 
 
     return next();
 });
+
+
 
 server.listen(9998, '127.0.0.1', function () {
     console.log('%s listening at %s', server.name, server.url);
