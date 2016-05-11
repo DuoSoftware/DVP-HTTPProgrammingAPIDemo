@@ -16,7 +16,35 @@ server.use(restify.bodyParser());
 
 
 
+server.post('/weather', function(req,res,next) {
 
+
+            var obj = {};
+            obj.action = "speak";
+            obj.file = "Please enter your ZIP code";
+            obj.result = "output";
+            obj.errorfile ="";
+            obj.digittimeout =5000;
+            obj.inputtimeout =10000;
+            obj.loops =3;
+            obj.engine ="flite";
+            obj.voice ="slt";
+            obj.terminator ="*";
+            obj.strip ="*";
+            obj.digits =5;
+            obj.nexturl = "readweather";
+
+
+
+            res.end(JSON.stringify(obj));
+
+
+
+    console.log(req.body);
+
+
+    return next();
+});
 
 
 
